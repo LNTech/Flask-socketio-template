@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Example SocketIO app</title>
+</head>
+<body>
+
+<h1>SocketIO Example</h1>
+<hr>
+
+
+<script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
+
+<script>
+	socket = io()
+	socket.connect("http://127.0.0.1:5000/") // change this
+
+	socket.on('connect', function() {
+		socket.send("start"); // once connected to ws, send a message with the data of "start"
+	})
+
+	socket.on("message", function(data) {
+		console.log(data);
+		// socket.send("start"); // repeat request
+	});
+</script>
+
+</body>
+</html>
